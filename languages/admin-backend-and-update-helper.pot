@@ -1,0 +1,1442 @@
+# Translation template for Admin Backend and Update Helper.
+# Copyright (C) 2025-2026 YIS Media
+# This file is distributed under the same license as the Admin Backend and Update Helper package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Admin Backend and Update Helper 1.1.0\n"
+"Report-Msgid-Bugs-To: https://yis-media.com\n"
+"POT-Creation-Date: 2026-11-26 18:44+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: admin-backend-and-update-helper.php:423
+msgid "Checking…"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:424
+msgid "Sending…"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:425
+msgid "Updating…"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:426
+msgid "The request failed. Please reload the page and try again."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:427
+msgid "Please enter an email address."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:428
+#: admin-backend-and-update-helper.php:496
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:429
+msgid "Please enter a valid second email address."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:430
+msgid "Please enter a number of days between 1 and 365."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:431
+msgid "Do you really want to install this update?"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:432
+msgid "Do you really want to install all updates? This can take a few minutes."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:433
+msgid "Delete this backup permanently? This cannot be undone."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:434
+msgid "Delete this entry permanently?"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:435
+msgid "Starting backup…"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:436
+#: includes/class-backhe-yis-backup-manager.php:654
+msgid "Backup cancelled."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:437
+#: includes/class-backhe-yis-backup-manager.php:650
+msgid "Backup completed."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:438
+#: includes/class-backhe-yis-backup-manager.php:652
+msgid "Backup failed."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:439
+msgid ""
+"A backup is running. If you leave this page, it continues in the background "
+"via WP-Cron, which can take longer."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:458
+#: admin-backend-and-update-helper.php:489
+#: admin-backend-and-update-helper.php:532
+#: admin-backend-and-update-helper.php:585
+#: admin/class-backhe-yis-admin-actions.php:146
+#: includes/class-backhe-yis-backup-manager.php:740
+#: includes/class-backhe-yis-backup-manager.php:786
+#: includes/class-backhe-yis-backup-manager.php:1127
+#: includes/class-backhe-yis-report.php:674
+#: includes/class-backhe-yis-report.php:696
+msgid "You are not allowed to do this."
+msgstr ""
+
+#. translators: %d: Number of updates found.
+#: admin-backend-and-update-helper.php:469
+#, php-format
+msgid "Check complete: %d update found."
+msgid_plural "Check complete: %d updates found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin-backend-and-update-helper.php:500
+msgid ""
+"The test email could not be sent. Please check the mail configuration of the "
+"server."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:503
+msgid "Test email sent."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:528
+msgid "Invalid update type."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:541
+msgid "There is no update available for this plugin."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:547
+msgid "There is no update available for this theme."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:554
+msgid "There is no WordPress update available."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:566
+msgid "Update installed."
+msgstr ""
+
+#. translators: 1: Number of successful updates, 2: Number of failed updates.
+#: admin-backend-and-update-helper.php:625
+#, php-format
+msgid "Updates installed: %1$d, failed: %2$d."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:685
+msgid "The update failed."
+msgstr ""
+
+#: admin-backend-and-update-helper.php:806
+msgid "Once weekly"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:812 admin/admin-page.php:382
+msgid "Every two weeks"
+msgstr ""
+
+#: admin-backend-and-update-helper.php:817
+msgid "Monthly (every 30 days)"
+msgstr ""
+
+#. translators: %d: Number of days.
+#: admin-backend-and-update-helper.php:827
+#, php-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin-backend-and-update-helper.php:897
+msgid "The plugin was deactivated."
+msgstr ""
+
+#: admin/admin-page.php:24 includes/class-backhe-yis-report.php:832
+msgid "Updates"
+msgstr ""
+
+#: admin/admin-page.php:25
+msgid "Server & website"
+msgstr ""
+
+#: admin/admin-page.php:26
+msgid "Notifications"
+msgstr ""
+
+#: admin/admin-page.php:27
+msgid "Settings"
+msgstr ""
+
+#: admin/admin-page.php:49
+msgid "Yes"
+msgstr ""
+
+#: admin/admin-page.php:50
+msgid "No"
+msgstr ""
+
+#: admin/admin-page.php:53
+msgid "Admin Backend and Update Helper"
+msgstr ""
+
+#: admin/admin-page.php:54
+msgid "Update notifications and system information for your WordPress website."
+msgstr ""
+
+#: admin/admin-page.php:59
+msgid "Overview sections"
+msgstr ""
+
+#: admin/admin-page.php:78 includes/class-backhe-yis-email-notifier.php:86
+#: includes/class-backhe-yis-email-notifier.php:202
+msgid "WordPress core"
+msgstr ""
+
+#: admin/admin-page.php:82 admin/admin-page.php:307
+#: includes/class-backhe-yis-email-notifier.php:203
+msgid "Plugins"
+msgstr ""
+
+#: admin/admin-page.php:86 admin/admin-page.php:285
+#: includes/class-backhe-yis-email-notifier.php:204
+msgid "Themes"
+msgstr ""
+
+#: admin/admin-page.php:93 admin/admin-page.php:395
+msgid "Available updates"
+msgstr ""
+
+#: admin/admin-page.php:95
+msgid "Check now"
+msgstr ""
+
+#. translators: %s: Number of available updates.
+#: admin/admin-page.php:105
+#, php-format
+msgid "%s update available"
+msgid_plural "%s updates available"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/admin-page.php:112
+msgid "Last check:"
+msgstr ""
+
+#: admin/admin-page.php:113
+msgid "Never"
+msgstr ""
+
+#: admin/admin-page.php:128 includes/class-backhe-yis-email-notifier.php:105
+#: includes/class-backhe-yis-email-notifier.php:196
+msgid "Name"
+msgstr ""
+
+#: admin/admin-page.php:129 includes/class-backhe-yis-email-notifier.php:197
+msgid "Installed"
+msgstr ""
+
+#: admin/admin-page.php:130 includes/class-backhe-yis-email-notifier.php:198
+msgid "Available"
+msgstr ""
+
+#: admin/admin-page.php:131 admin/class-backhe-yis-log-list-table.php:79
+#: admin/views/backup-page.php:87 includes/class-backhe-yis-report.php:642
+msgid "Action"
+msgstr ""
+
+#: admin/admin-page.php:155
+msgid "Install update"
+msgstr ""
+
+#: admin/admin-page.php:168 includes/class-backhe-yis-email-notifier.php:229
+msgid "Translations"
+msgstr ""
+
+#. translators: %s: Number of translation updates.
+#: admin/admin-page.php:174
+#, php-format
+msgid "%s translation update available."
+msgid_plural "%s translation updates available."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/admin-page.php:184
+msgid "Everything is up to date."
+msgstr ""
+
+#: admin/admin-page.php:188
+msgid "Install all updates"
+msgstr ""
+
+#: admin/admin-page.php:199
+msgid "Server"
+msgstr ""
+
+#: admin/admin-page.php:201
+msgid "Server software"
+msgstr ""
+
+#: admin/admin-page.php:202
+msgid "Operating system"
+msgstr ""
+
+#: admin/admin-page.php:203
+msgid "Host name"
+msgstr ""
+
+#: admin/admin-page.php:204
+msgid "Architecture"
+msgstr ""
+
+#: admin/admin-page.php:208
+msgid "PHP"
+msgstr ""
+
+#: admin/admin-page.php:210
+msgid "PHP version"
+msgstr ""
+
+#: admin/admin-page.php:211
+msgid "Latest stable PHP version"
+msgstr ""
+
+#: admin/admin-page.php:212
+msgid "Memory limit"
+msgstr ""
+
+#: admin/admin-page.php:213
+msgid "Max execution time"
+msgstr ""
+
+#: admin/admin-page.php:214
+msgid "Upload max filesize"
+msgstr ""
+
+#: admin/admin-page.php:215
+msgid "Post max size"
+msgstr ""
+
+#: admin/admin-page.php:216
+msgid "Max input vars"
+msgstr ""
+
+#: admin/admin-page.php:217
+msgid "Display errors"
+msgstr ""
+
+#: admin/admin-page.php:218
+msgid "Allow URL fopen"
+msgstr ""
+
+#: admin/admin-page.php:222 admin/views/backup-page.php:108
+msgid "Database"
+msgstr ""
+
+#: admin/admin-page.php:224
+msgid "Database version"
+msgstr ""
+
+#: admin/admin-page.php:225
+msgid "Charset"
+msgstr ""
+
+#: admin/admin-page.php:226
+msgid "Collation"
+msgstr ""
+
+#: admin/admin-page.php:227
+msgid "Table prefix"
+msgstr ""
+
+#: admin/admin-page.php:228
+msgid "Max allowed packet"
+msgstr ""
+
+#: admin/admin-page.php:229
+msgid "Max connections"
+msgstr ""
+
+#: admin/admin-page.php:230
+msgid "Number of tables"
+msgstr ""
+
+#: admin/admin-page.php:231
+msgid "Database size"
+msgstr ""
+
+#: admin/admin-page.php:235
+msgid "WordPress"
+msgstr ""
+
+#: admin/admin-page.php:237
+msgid "WordPress version"
+msgstr ""
+
+#: admin/admin-page.php:238
+msgid "Multisite"
+msgstr ""
+
+#: admin/admin-page.php:239
+msgid "Language"
+msgstr ""
+
+#: admin/admin-page.php:240
+msgid "Debug mode"
+msgstr ""
+
+#: admin/admin-page.php:241
+msgid "WP memory limit"
+msgstr ""
+
+#: admin/admin-page.php:242
+msgid "WP max memory limit"
+msgstr ""
+
+#: admin/admin-page.php:243
+msgid "Home URL"
+msgstr ""
+
+#: admin/admin-page.php:244
+msgid "Site URL"
+msgstr ""
+
+#: admin/admin-page.php:253
+msgid "A newer PHP version is recommended."
+msgstr ""
+
+#. translators: 1: Current PHP version, 2: Latest stable PHP version.
+#: admin/admin-page.php:258
+#, php-format
+msgid "Your PHP version: %1$s. Latest stable version: %2$s."
+msgstr ""
+
+#: admin/admin-page.php:289 includes/class-backhe-yis-email-notifier.php:83
+msgid "Theme"
+msgstr ""
+
+#: admin/admin-page.php:290 admin/admin-page.php:325
+#: includes/class-backhe-yis-email-notifier.php:106
+msgid "Version"
+msgstr ""
+
+#: admin/admin-page.php:291 admin/admin-page.php:327
+#: admin/views/report-page.php:59
+msgid "Status"
+msgstr ""
+
+#: admin/admin-page.php:299 admin/admin-page.php:336
+msgid "Active"
+msgstr ""
+
+#: admin/admin-page.php:299 admin/admin-page.php:336
+msgid "Inactive"
+msgstr ""
+
+#. translators: 1: Total number of plugins, 2: Active plugins, 3: Inactive plugins.
+#: admin/admin-page.php:313
+#, php-format
+msgid "%1$d installed, %2$d active, %3$d inactive"
+msgstr ""
+
+#: admin/admin-page.php:324 includes/class-backhe-yis-email-notifier.php:78
+msgid "Plugin"
+msgstr ""
+
+#: admin/admin-page.php:326
+msgid "Author"
+msgstr ""
+
+#: admin/admin-page.php:344
+msgid "PHP extensions"
+msgstr ""
+
+#: admin/admin-page.php:350
+msgid "(available)"
+msgstr ""
+
+#: admin/admin-page.php:350
+msgid "(missing)"
+msgstr ""
+
+#: admin/admin-page.php:357
+msgid "Disk space"
+msgstr ""
+
+#: admin/admin-page.php:360
+msgid "Website size"
+msgstr ""
+
+#: admin/admin-page.php:361
+msgid "Total space"
+msgstr ""
+
+#: admin/admin-page.php:362
+msgid "Used"
+msgstr ""
+
+#: admin/admin-page.php:363
+msgid "Free"
+msgstr ""
+
+#: admin/admin-page.php:367
+msgid "Disk usage:"
+msgstr ""
+
+#: admin/admin-page.php:378
+msgid "Hourly"
+msgstr ""
+
+#: admin/admin-page.php:379
+msgid "Twice daily"
+msgstr ""
+
+#: admin/admin-page.php:380 includes/class-backhe-yis-backup-manager.php:204
+msgid "Daily"
+msgstr ""
+
+#: admin/admin-page.php:381 includes/class-backhe-yis-backup-manager.php:205
+msgid "Weekly"
+msgstr ""
+
+#: admin/admin-page.php:383 includes/class-backhe-yis-backup-manager.php:206
+msgid "Monthly"
+msgstr ""
+
+#: admin/admin-page.php:384
+msgid "Custom number of days"
+msgstr ""
+
+#: admin/admin-page.php:388
+msgid "Email notifications"
+msgstr ""
+
+#: admin/admin-page.php:398
+msgid "Send an email when updates are available"
+msgstr ""
+
+#: admin/admin-page.php:399
+msgid "The check runs in the background at the frequency below."
+msgstr ""
+
+#: admin/admin-page.php:404
+msgid "Installed updates"
+msgstr ""
+
+#: admin/admin-page.php:407
+msgid "Send an email after updates were installed"
+msgstr ""
+
+#: admin/admin-page.php:412 admin/admin-page.php:415
+msgid "Recipient"
+msgstr ""
+
+#. translators: %s: Administration email address.
+#: admin/admin-page.php:423
+#, php-format
+msgid "Administration email address (%s)"
+msgstr ""
+
+#: admin/admin-page.php:432
+msgid "A WordPress user"
+msgstr ""
+
+#: admin/admin-page.php:435
+msgid "User"
+msgstr ""
+
+#: admin/admin-page.php:446
+msgid "Custom email addresses"
+msgstr ""
+
+#: admin/admin-page.php:450
+msgid "First email address"
+msgstr ""
+
+#: admin/admin-page.php:454
+msgid "Second email address (optional)"
+msgstr ""
+
+#: admin/admin-page.php:463
+msgid "Check frequency"
+msgstr ""
+
+#: admin/admin-page.php:471
+msgid "Number of days"
+msgstr ""
+
+#: admin/admin-page.php:474
+msgid "How often should the plugin check for updates and send notifications?"
+msgstr ""
+
+#: admin/admin-page.php:480 admin/admin-page.php:514
+#: admin/views/backup-page.php:209 admin/views/report-page.php:171
+msgid "Save settings"
+msgstr ""
+
+#: admin/admin-page.php:481
+msgid "Send test email"
+msgstr ""
+
+#: admin/admin-page.php:491
+msgid "Plugin settings"
+msgstr ""
+
+#: admin/admin-page.php:498 admin/admin-page.php:501
+msgid "Access for user roles"
+msgstr ""
+
+#: admin/admin-page.php:509
+msgid ""
+"Choose which user roles may use the plugin. Users additionally need the "
+"\"manage_options\" capability."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:116
+msgid "The service was saved."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:117
+msgid "The entry was deleted."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:118
+msgid "Please enter a description and a valid date."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:119
+msgid "The entry could not be saved."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:120
+msgid "The report was sent."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:121
+msgid ""
+"The report could not be sent. Please check the recipients and the mail "
+"configuration of the server."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:122
+msgid "The backup was deleted."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-actions.php:123
+msgid "The backup could not be deleted."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:60
+#: admin/class-backhe-yis-admin-menu.php:61
+msgid "Backend Helper"
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:71
+msgid "Overview"
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:75 admin/views/log-page.php:55
+msgid "Activity Log"
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:79 admin/views/report-page.php:46
+msgid "Service Report"
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:83 admin/views/backup-page.php:30
+#: includes/class-backhe-yis-report.php:836
+msgid "Backups"
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:194
+msgid "You are not allowed to access this page."
+msgstr ""
+
+#: admin/class-backhe-yis-admin-menu.php:204
+msgid "The admin page could not be found."
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:78 admin/views/backup-page.php:83
+#: admin/views/log-page.php:70 includes/class-backhe-yis-report.php:635
+#: includes/class-backhe-yis-report.php:641
+msgid "Date"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:80
+#: includes/class-backhe-yis-report.php:643
+msgid "Item"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:81
+#: includes/class-backhe-yis-report.php:644
+msgid "Details"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:82
+msgid "By"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:125
+msgid "No entries found."
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:169
+msgid "Edit"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:175
+#: admin/views/backup-page.php:139
+msgid "Delete"
+msgstr ""
+
+#: admin/class-backhe-yis-log-list-table.php:249
+msgid "System"
+msgstr ""
+
+#: admin/views/backup-page.php:31
+msgid ""
+"Backups of the database and the wp-content directory are stored on this "
+"server in a protected directory. Download them regularly and keep copies in "
+"a second location."
+msgstr ""
+
+#: admin/views/backup-page.php:38
+msgid ""
+"The PHP extension \"zip\" is not available on this server. Only database "
+"backups are possible."
+msgstr ""
+
+#: admin/views/backup-page.php:45
+msgid "The last backup failed:"
+msgstr ""
+
+#: admin/views/backup-page.php:52
+msgid "Create a backup"
+msgstr ""
+
+#: admin/views/backup-page.php:55 admin/views/backup-page.php:84
+#: admin/views/backup-page.php:192
+msgid "Scope"
+msgstr ""
+
+#: admin/views/backup-page.php:63
+msgid "Create backup now"
+msgstr ""
+
+#: admin/views/backup-page.php:64
+msgid "Cancel backup"
+msgstr ""
+
+#: admin/views/backup-page.php:69
+msgid "Backup progress"
+msgstr ""
+
+#: admin/views/backup-page.php:76
+msgid "Available backups"
+msgstr ""
+
+#: admin/views/backup-page.php:78
+msgid "There are no backups yet."
+msgstr ""
+
+#: admin/views/backup-page.php:85
+msgid "Size"
+msgstr ""
+
+#: admin/views/backup-page.php:86
+msgid "Files"
+msgstr ""
+
+#: admin/views/backup-page.php:96
+#: includes/class-backhe-yis-backup-manager.php:955
+msgid "automatic"
+msgstr ""
+
+#: admin/views/backup-page.php:96
+#: includes/class-backhe-yis-backup-manager.php:955
+msgid "manual"
+msgstr ""
+
+#. translators: %s: Part number from the file name, e.g. "files-2.zip".
+#: admin/views/backup-page.php:111
+#, php-format
+msgid "Files (%s)"
+msgstr ""
+
+#. translators: %s: Backup date.
+#: admin/views/backup-page.php:121
+#, php-format
+msgid "download, backup from %s"
+msgstr ""
+
+#: admin/views/backup-page.php:152
+msgid "Automatic backups"
+msgstr ""
+
+#: admin/views/backup-page.php:157
+msgid "Schedule"
+msgstr ""
+
+#. translators: %s: Date and time of the next backup.
+#: admin/views/backup-page.php:170
+#, php-format
+msgid "Next automatic backup: %s."
+msgstr ""
+
+#: admin/views/backup-page.php:176
+msgid ""
+"WP-Cron only runs when the website is visited. For reliable backups, set up "
+"a real cron job at your host."
+msgstr ""
+
+#: admin/views/backup-page.php:182
+msgid "Time"
+msgstr ""
+
+#: admin/views/backup-page.php:202
+msgid "Backups to keep"
+msgstr ""
+
+#: admin/views/backup-page.php:205
+msgid "Older backups are deleted automatically after a new backup was created."
+msgstr ""
+
+#: admin/views/backup-page.php:214
+msgid "Good to know"
+msgstr ""
+
+#: admin/views/backup-page.php:216
+msgid ""
+"Restoring is not done by the plugin. To restore, import the database file "
+"(e.g. with phpMyAdmin) and upload the contents of the ZIP files to the wp-"
+"content directory."
+msgstr ""
+
+#: admin/views/backup-page.php:217
+msgid ""
+"Cache directories and the backup directories of other backup plugins are not "
+"included."
+msgstr ""
+
+#: admin/views/backup-page.php:218
+msgid ""
+"When the plugin is deleted, all backups stored by it are deleted as well."
+msgstr ""
+
+#: admin/views/log-page.php:56
+msgid ""
+"Changes to this website are recorded automatically. Add services that "
+"WordPress cannot record, e.g. support work or checks of hosting backups."
+msgstr ""
+
+#: admin/views/log-page.php:62
+msgid "Edit service"
+msgstr ""
+
+#: admin/views/log-page.php:62
+msgid "Add a service"
+msgstr ""
+
+#: admin/views/log-page.php:74 includes/class-backhe-yis-report.php:636
+msgid "Service"
+msgstr ""
+
+#: admin/views/log-page.php:76
+msgid "For example: \"Contact form adjusted\" or \"Hosting backup checked\"."
+msgstr ""
+
+#: admin/views/log-page.php:79
+msgid "Duration in minutes (optional)"
+msgstr ""
+
+#: admin/views/log-page.php:83
+msgid "Update service"
+msgstr ""
+
+#: admin/views/log-page.php:83
+msgid "Add service"
+msgstr ""
+
+#: admin/views/log-page.php:85
+msgid "Cancel"
+msgstr ""
+
+#: admin/views/log-page.php:91
+msgid "Entries"
+msgstr ""
+
+#: admin/views/log-page.php:95 includes/class-backhe-yis-report.php:609
+msgid "Area"
+msgstr ""
+
+#: admin/views/log-page.php:97
+msgid "All areas"
+msgstr ""
+
+#: admin/views/log-page.php:104 admin/views/report-page.php:181
+msgid "From"
+msgstr ""
+
+#: admin/views/log-page.php:108 admin/views/report-page.php:185
+msgid "To"
+msgstr ""
+
+#: admin/views/log-page.php:112
+msgid "Filter"
+msgstr ""
+
+#. translators: %d: Number of months.
+#: admin/views/log-page.php:123
+#, php-format
+msgid "Entries are kept for %d month."
+msgid_plural "Entries are kept for %d months."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: Report period, 2: Date and time the report is sent.
+#: admin/views/report-page.php:36
+#, php-format
+msgid "Next report: %1$s, sent on %2$s."
+msgstr ""
+
+#: admin/views/report-page.php:47
+msgid ""
+"Sends a summary of updates, backups, changes and additional services at the "
+"end of each period, e.g. for website maintenance clients."
+msgstr ""
+
+#: admin/views/report-page.php:53
+msgid "Automatic report"
+msgstr ""
+
+#: admin/views/report-page.php:63
+msgid "Send the report automatically"
+msgstr ""
+
+#: admin/views/report-page.php:71 admin/views/report-page.php:74
+#: includes/class-backhe-yis-email-notifier.php:267
+msgid "Recipients"
+msgstr ""
+
+#. translators: %d: Number of the recipient (1-3).
+#: admin/views/report-page.php:82
+#, php-format
+msgid "Email address %d"
+msgstr ""
+
+#: admin/views/report-page.php:96
+msgid "Website name in the report"
+msgstr ""
+
+#: admin/views/report-page.php:99
+msgid "Leave empty to use the site title."
+msgstr ""
+
+#: admin/views/report-page.php:104 admin/views/report-page.php:107
+msgid "Period ends"
+msgstr ""
+
+#: admin/views/report-page.php:115
+msgid "Day of the month (1-28)"
+msgstr ""
+
+#: admin/views/report-page.php:120
+msgid "Every how many days"
+msgstr ""
+
+#: admin/views/report-page.php:126
+msgid ""
+"The chosen day is the last day of the period. The report is sent on the "
+"following day. Example: with day 15 the report covers the 16th of the "
+"previous month to the 15th and is sent on the 16th."
+msgstr ""
+
+#: admin/views/report-page.php:131 admin/views/report-page.php:134
+msgid "Period starts"
+msgstr ""
+
+#: admin/views/report-page.php:142
+msgid "Number of days, e.g. 28 for four weeks"
+msgstr ""
+
+#: admin/views/report-page.php:152
+msgid "Send time"
+msgstr ""
+
+#: admin/views/report-page.php:163
+msgid "Keep log entries"
+msgstr ""
+
+#: admin/views/report-page.php:166
+msgid "months"
+msgstr ""
+
+#: admin/views/report-page.php:176
+msgid "Report for any period"
+msgstr ""
+
+#: admin/views/report-page.php:177
+msgid "Preview the report or send it now to the recipients above."
+msgstr ""
+
+#: admin/views/report-page.php:190
+msgid "Preview"
+msgstr ""
+
+#: admin/views/report-page.php:191
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: admin/views/report-page.php:194
+msgid "Send now"
+msgstr ""
+
+#: admin/views/report-page.php:198
+msgid "Save at least one recipient to send the report."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-database.php:98
+msgid "The database backup file could not be written."
+msgstr ""
+
+#. translators: 1: Table name, 2: Database error.
+#: includes/class-backhe-yis-backup-database.php:125
+#, php-format
+msgid "Table %1$s could not be read: %2$s"
+msgstr ""
+
+#. translators: %s: Table name.
+#: includes/class-backhe-yis-backup-database.php:198
+#, php-format
+msgid "The structure of table %s could not be read."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-database.php:291
+msgid "The database backup file could not be written. The disk may be full."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-files.php:99
+msgid "The file list for the backup could not be written."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-files.php:137
+msgid ""
+"The file list for the backup could not be written. The disk may be full."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-files.php:169
+msgid "The file list for the backup could not be read."
+msgstr ""
+
+#. translators: %s: File path.
+#: includes/class-backhe-yis-backup-files.php:212
+#, php-format
+msgid "The file %s could not be added to the backup."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-files.php:314
+msgid "The backup archive could not be created."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-files.php:337
+msgid ""
+"The backup archive could not be written. The disk may be full or a file "
+"changed during the backup."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:203
+msgid "No automatic backups"
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:219
+msgid "Database and files (wp-content)"
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:220
+msgid "Database only"
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:277
+msgid ""
+"The backup directory could not be created. Please check the permissions of "
+"the uploads directory."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:362
+msgid "A backup is already running."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:366
+msgid ""
+"File backups need the PHP extension \"zip\", which is not available on this "
+"server. Please create a database backup or ask your host to enable the "
+"extension."
+msgstr ""
+
+#. translators: %s: Free disk space, e.g. "80 MB".
+#: includes/class-backhe-yis-backup-manager.php:382
+#, php-format
+msgid "There is not enough free disk space for a backup (%s free)."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:572
+#: includes/class-backhe-yis-backup-manager.php:591
+msgid "There is no backup running."
+msgstr ""
+
+#. translators: 1: Current table number, 2: Number of tables.
+#: includes/class-backhe-yis-backup-manager.php:616
+#, php-format
+msgid "Exporting the database: table %1$d of %2$d"
+msgstr ""
+
+#. translators: %s: Number of files found so far.
+#: includes/class-backhe-yis-backup-manager.php:626
+#, php-format
+msgid "Collecting files: %s found"
+msgstr ""
+
+#. translators: 1: Number of compressed files, 2: Number of files.
+#: includes/class-backhe-yis-backup-manager.php:636
+#, php-format
+msgid "Compressing files: %1$s of %2$s"
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:644
+msgid "Finishing the backup…"
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:751
+msgid "The backup file could not be found."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:941
+msgid "The backup could not be written to disk."
+msgstr ""
+
+#: includes/class-backhe-yis-backup-manager.php:1029
+msgid ""
+"The backup stopped making progress, e.g. because the server ended the "
+"process."
+msgstr ""
+
+#. translators: %d: Number of installed updates.
+#: includes/class-backhe-yis-email-notifier.php:97
+#, php-format
+msgid "%d update was installed:"
+msgid_plural "%d updates were installed:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-backhe-yis-email-notifier.php:104
+msgid "Type"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:113
+#: includes/class-backhe-yis-email-notifier.php:114
+#: includes/class-backhe-yis-report.php:578
+msgid "Updates installed"
+msgstr ""
+
+#. translators: %d: Number of available updates.
+#: includes/class-backhe-yis-email-notifier.php:172
+#, php-format
+msgid "%d update available"
+msgid_plural "%d updates available"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: Number of available updates.
+#: includes/class-backhe-yis-email-notifier.php:190
+#, php-format
+msgid "There is %d update available for your website."
+msgid_plural "There are %d updates available for your website."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: Number of translation updates.
+#: includes/class-backhe-yis-email-notifier.php:233
+#, php-format
+msgid "%d translation update available."
+msgid_plural "%d translation updates available."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-backhe-yis-email-notifier.php:239
+msgid "Install updates now"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:241
+msgid "Updates available"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:260
+msgid ""
+"This is a test email from the Admin Backend and Update Helper plugin. If you "
+"can read it, email notifications work."
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:263
+msgid "Setting"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:264
+msgid "Value"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:268
+msgid "Sender"
+msgstr ""
+
+#: includes/class-backhe-yis-email-notifier.php:274
+#: includes/class-backhe-yis-email-notifier.php:275
+msgid "Test email"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Date and time.
+#: includes/class-backhe-yis-email-notifier.php:325
+#, php-format
+msgid "Sent by %1$s on %2$s"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:103
+msgid "WordPress updated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:104
+msgid "Plugin updated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:105
+msgid "Theme updated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:106
+msgid "Translation updated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:107
+msgid "Plugin installed"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:108
+msgid "Plugin activated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:109
+msgid "Plugin deactivated"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:110
+msgid "Plugin deleted"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:111
+msgid "Theme installed"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:112
+msgid "Theme switched"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:113
+msgid "Theme deleted"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:114
+msgid "Content published"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:115
+msgid "Content edited"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:116
+msgid "Content moved to trash"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:117
+msgid "User created"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:118
+msgid "User deleted"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:119
+msgid "User role changed"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:120
+msgid "Backup created"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:121
+msgid "Backup failed"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:122
+msgid "Manual service"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:524
+msgid "Backup by UpdraftPlus"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:531
+msgid "Database and files (UpdraftPlus)"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:533
+msgid "Database (UpdraftPlus)"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:535
+msgid "Files (UpdraftPlus)"
+msgstr ""
+
+#: includes/class-backhe-yis-event-tracker.php:757
+msgid "(no title)"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:205
+msgid "On a fixed day of each month"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:206
+msgid "On the last day of each month"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:207
+msgid "On the first day of each month"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:208
+msgid "Every few days"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:221
+msgid "Since the end of the previous report period"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:222
+msgid "A fixed number of days"
+msgstr ""
+
+#. translators: %s: Report period, e.g. "16/10/2026 – 15/11/2026".
+#: includes/class-backhe-yis-report.php:463
+#, php-format
+msgid "Service report %s"
+msgstr ""
+
+#. translators: 1: Website name, 2: Report period.
+#: includes/class-backhe-yis-report.php:570
+#, php-format
+msgid "This report lists the maintenance work on %1$s in the period %2$s."
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:585
+msgid "Backups created"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:588
+msgid "Failed backups"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:591
+msgid "Plugin and theme changes"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:592
+msgid "Content changes"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:593
+msgid "User changes"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:595
+#: includes/class-backhe-yis-report.php:852
+msgid "Additional services"
+msgstr ""
+
+#. translators: 1: Number of services, 2: Total duration, e.g. "2:30 h".
+#: includes/class-backhe-yis-report.php:599
+#, php-format
+msgid "%1$d (%2$s)"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:606
+msgid "Summary"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:610
+msgid "Count"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:637
+msgid "Duration"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:655
+msgid "No changes were recorded in this period."
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:659
+msgid "Service report"
+msgstr ""
+
+#. translators: 1: Hours, 2: Minutes (two digits).
+#: includes/class-backhe-yis-report.php:776
+#, php-format
+msgid "%1$d:%2$s h"
+msgstr ""
+
+#. translators: %d: Number of edits.
+#: includes/class-backhe-yis-report.php:802
+#, php-format
+msgid "%d edit"
+msgid_plural "%d edits"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-backhe-yis-report.php:840
+msgid "Plugins and themes"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:844
+msgid "Content"
+msgstr ""
+
+#: includes/class-backhe-yis-report.php:848
+msgid "Users"
+msgstr ""
+
+#: includes/class-backhe-yis-system-info.php:110
+#: includes/class-backhe-yis-system-info.php:133
+#: includes/class-backhe-yis-system-info.php:134
+#: includes/class-backhe-yis-system-info.php:136
+msgid "Unknown"
+msgstr ""

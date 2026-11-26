@@ -1,0 +1,243 @@
+/**
+ * Admin styles of the Admin Backend and Update Helper plugin.
+ *
+ * Uses the WordPress admin colors and components; all selectors are scoped
+ * to the plugin pages.
+ *
+ * @package Admin_Backend_and_Update_Helper_YIS_Media
+ * @since 1.0.0
+ */
+
+.backhe-yis-admin {
+	max-width: 1400px;
+}
+
+/* WordPress button styles would otherwise override the hidden attribute. */
+.backhe-yis-admin [hidden] {
+	display: none !important;
+}
+
+/* Tabs */
+
+.backhe-yis-admin .nav-tab-wrapper {
+	margin-top: 20px;
+}
+
+/* Layout */
+
+.backhe-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 24px;
+	margin-top: 24px;
+}
+
+.backhe-card {
+	margin-top: 20px;
+	padding: 20px 24px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.backhe-grid .backhe-card {
+	margin-top: 0;
+}
+
+.backhe-card-full {
+	grid-column: 1 / -1;
+}
+
+.backhe-card h2 {
+	margin-top: 0;
+	font-size: 1.3em;
+}
+
+.backhe-card-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.backhe-card-header h2 {
+	margin-bottom: 0;
+}
+
+/* Tables */
+
+.backhe-info-table th[scope="row"] {
+	width: 40%;
+	font-weight: 600;
+}
+
+.backhe-update-section {
+	margin-bottom: 24px;
+}
+
+/* Update summary */
+
+.backhe-update-summary {
+	margin: 16px 0;
+}
+
+.backhe-update-badge {
+	display: inline-block;
+	margin: 0 0 8px;
+	padding: 4px 16px;
+	border: 2px solid;
+	border-radius: 20px;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+/* Text colors meet WCAG AA contrast on their backgrounds. */
+.backhe-badge-warning {
+	border-color: #dba617;
+	background: #fcf9e8;
+	color: #614a00;
+}
+
+.backhe-badge-success {
+	border-color: #00a32a;
+	background: #edfaef;
+	color: #005c12;
+}
+
+.backhe-version-new {
+	color: #005c12;
+}
+
+.backhe-success-message {
+	color: #005c12;
+	font-size: 15px;
+	font-weight: 600;
+}
+
+/* PHP extensions */
+
+.backhe-extensions-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+}
+
+.backhe-extension-badge {
+	margin: 0;
+	padding: 4px 12px;
+	border: 1px solid;
+	border-radius: 14px;
+	font-family: monospace;
+}
+
+.backhe-ext-loaded {
+	border-color: #68de7c;
+	background: #edfaef;
+	color: #005c12;
+}
+
+.backhe-ext-missing {
+	border-color: #ffabaf;
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+/* Progress bars */
+
+.backhe-progress,
+.backhe-backup-progress progress {
+	width: 100%;
+	max-width: 480px;
+	height: 16px;
+	vertical-align: middle;
+}
+
+.backhe-backup-progress {
+	margin-top: 16px;
+}
+
+.backhe-backup-progress label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+/* Forms */
+
+.backhe-yis-admin .form-table th {
+	width: 220px;
+}
+
+.backhe-conditional {
+	margin: 4px 0 12px 24px;
+}
+
+.backhe-conditional[hidden] {
+	display: none;
+}
+
+.backhe-indent {
+	margin-left: 24px;
+}
+
+.backhe-manual-form,
+.backhe-log-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	align-items: flex-end;
+}
+
+.backhe-field {
+	margin: 0 0 8px;
+}
+
+.backhe-field label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.backhe-field-wide {
+	flex: 1 1 320px;
+}
+
+.backhe-field .description {
+	display: block;
+}
+
+.backhe-file-list {
+	margin: 0;
+}
+
+.backhe-file-list li {
+	margin-bottom: 4px;
+}
+
+.backhe-delete-backup-form {
+	margin: 0;
+}
+
+.backhe-yis-notices .notice {
+	margin: 12px 0;
+}
+
+/* Small screens */
+
+@media screen and (max-width: 782px) {
+
+	.backhe-card {
+		padding: 16px;
+	}
+
+	.backhe-grid {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.backhe-yis-admin .form-table th {
+		width: auto;
+	}
+}
