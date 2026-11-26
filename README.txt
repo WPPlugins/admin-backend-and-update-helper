@@ -1,34 +1,32 @@
 === Admin Backend and Update Helper ===
 Contributors: yismedia
-Tags: updates, backup, activity log, maintenance report, system info
+Tags: update notifications, activity log, maintenance report, client report, system info
 Requires at least: 6.2
 Tested up to: 7.2
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Updates, backups, activity log and maintenance reports for WordPress – everything you need for website maintenance in one place.
+Update notifications, activity log and maintenance reports for WordPress – the documentation for your website maintenance service.
 
 == Description ==
 
-**Admin Backend and Update Helper** brings together what agencies and freelancers need for website maintenance: an overview of all updates, backups of database and files, a log of every change and a periodic service report for your clients.
+**Admin Backend and Update Helper** supports agencies and freelancers in website maintenance: it tells you when updates are available, records every change and sends a periodic service report to your clients.
 
 = Main features =
 
-* **Update overview**: All available updates for core, plugins, themes and translations at a glance; install single updates or all at once.
-* **Email notifications**: Get notified about available updates and after updates were installed.
-* **Activity log**: Updates (including automatic updates), plugin and theme changes, published and edited content, user changes and backups are recorded automatically.
+* **Update notifications**: Get an email to the address of your choice when updates for core, plugins, themes or translations are available – and optionally after updates were installed. The overview shows all pending updates; updates are installed on the regular WordPress updates page.
+* **Activity log**: Updates (including automatic updates), plugin and theme changes, published and edited content, user changes and UpdraftPlus backups are recorded automatically.
 * **Manual services**: Add work that WordPress cannot record – e.g. support tasks or checks of hosting backups – with an optional duration.
 * **Service report**: An HTML email at the end of each period with a summary and details of all work. Periods are flexible: monthly on a fixed day (e.g. 16th to 15th), on the first or last day of the month, every few days, or a fixed number of days such as four weeks.
-* **Backups**: Database and wp-content backups, manually or on a schedule, processed in small steps so they also work on shared hosting. Backups are stored in a protected directory and can be downloaded from the admin area.
-* **UpdraftPlus**: Completed UpdraftPlus backups are counted in the log and the report.
+* **Backups with UpdraftPlus**: Completed UpdraftPlus backups are counted in the log and the report. Backups made elsewhere (e.g. by your host) can be added as manual services.
 * **System information**: Server, PHP, database, WordPress, themes, plugins, PHP extensions and disk space.
 * **Role-based access**: Choose which user roles may use the plugin (in addition to the "manage_options" capability).
 
 = Privacy =
 
-No data leaves your server. The plugin makes no external requests and uses no tracking. The activity log stores the user names of the users who made changes; backups contain a complete copy of your database. Both stay on your server.
+No data leaves your server, except the notification and report emails you configure. The plugin makes no external requests and uses no tracking. The activity log stores the user names of the users who made changes; it stays on your server.
 
 = Accessibility =
 
@@ -45,13 +43,21 @@ For questions or problems, contact us at kontakt@yis-media.com or visit https://
 2. Open "Backend Helper" in the admin menu.
 3. Under "Overview" > "Notifications", configure the update notifications and send a test email.
 4. Under "Service Report", enter the recipients and the period, and enable the automatic report.
-5. Under "Backups", create a first backup and set up a schedule.
+5. Optional: install UpdraftPlus for backups; completed backups then appear in the log and the report.
 
 == Frequently Asked Questions ==
 
 = Does the plugin send data to external servers? =
 
-No. All data stays on your server.
+No. All data stays on your server; only the emails you configure are sent.
+
+= Does the plugin install updates? =
+
+No. It notifies you about available updates. Install them on the regular WordPress updates page ("Dashboard" > "Updates"); installed updates are recorded in the activity log.
+
+= How are backups counted in the report? =
+
+Completed backups made with UpdraftPlus are recorded automatically. Backups made by other tools or your host can be added as manual services.
 
 = How is the report period defined? =
 
@@ -63,27 +69,19 @@ Yes. On the "Service Report" page you can preview the report for any date range 
 
 = Which changes are recorded? =
 
-Core, plugin, theme and translation updates (including automatic updates); installed, activated, deactivated and deleted plugins and themes; theme switches; published, edited and trashed content (several edits of the same content on one day are combined); created and deleted users and role changes; backups. Logins are not recorded.
+Core, plugin, theme and translation updates (including automatic updates); installed, activated, deactivated and deleted plugins and themes; theme switches; published, edited and trashed content (several edits of the same content on one day are combined); created and deleted users and role changes; completed UpdraftPlus backups. Logins are not recorded.
 
 = How long are log entries kept? =
 
 24 months by default; you can change this on the "Service Report" page.
 
-= How do I restore a backup? =
-
-The plugin does not restore backups automatically, because a failed restore can break a website. Download the backup files. Import the database file (`.sql.gz`) with a tool such as phpMyAdmin, and upload the contents of the ZIP files to your `wp-content` directory.
-
-= Where are backups stored? Are they safe? =
-
-In a directory with a random name inside `wp-content/uploads`, protected against direct access. Downloads are only possible for logged-in users with access to the plugin. Keep copies of your backups in a second location.
-
-= Why do my scheduled backups or reports run late? =
+= Why do my notifications or reports run late? =
 
 WP-Cron only runs when your website is visited. For reliable schedules, set up a real cron job at your host that calls `wp-cron.php`.
 
 = What happens when I delete the plugin? =
 
-All settings, the activity log and all backups created by the plugin are deleted. Download the backups you want to keep first.
+All settings and the activity log are deleted.
 
 = Which PHP version is recommended? =
 
@@ -101,9 +99,13 @@ The plugin works per site. Super admins always have access.
 4. Activity log with manual services
 5. Service report settings
 6. Service report email
-7. Backups
 
 == Changelog ==
+
+= 1.2.0 =
+* Changed: The plugin no longer installs updates. It notifies you about available updates; install them on the WordPress updates page. The overview still lists all pending updates.
+* Removed: The built-in backups. Use UpdraftPlus for backups (including FTP, SFTP and cloud storage); completed UpdraftPlus backups are counted in the log and the report.
+* Removed: Backups created with version 1.1.0 are deleted during the update, because they contain a copy of the database.
 
 = 1.1.0 =
 * New: Activity log for updates, plugin and theme changes, content, users and backups, with manual services and durations.
@@ -127,6 +129,9 @@ The plugin works per site. Super admins always have access.
 * First public version.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+The plugin no longer installs updates or creates backups (use UpdraftPlus). Backups created with 1.1.0 are deleted during the update – download them first if you need them.
 
 = 1.1.0 =
 Adds an activity log, service reports and backups, and fixes several issues with settings, scheduling and security. Requires WordPress 6.2.

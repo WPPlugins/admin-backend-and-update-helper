@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Registers the plugin's admin menu and sub pages.
  *
  * @since 1.0.0
- * @since 1.1.0 Added the activity log, report and backup sub pages.
+ * @since 1.1.0 Added the activity log and report sub pages.
  */
 class Backhe_YIS_Admin_Menu {
 
@@ -67,21 +67,17 @@ class Backhe_YIS_Admin_Menu {
 		);
 
 		$pages = array(
-			'backhe_yis_admin'   => array(
+			'backhe_yis_admin'  => array(
 				'title'    => __( 'Overview', 'admin-backend-and-update-helper' ),
 				'callback' => array( $this, 'render_admin_page' ),
 			),
-			'backhe_yis_log'     => array(
+			'backhe_yis_log'    => array(
 				'title'    => __( 'Activity Log', 'admin-backend-and-update-helper' ),
 				'callback' => array( $this, 'render_log_page' ),
 			),
-			'backhe_yis_report'  => array(
+			'backhe_yis_report' => array(
 				'title'    => __( 'Service Report', 'admin-backend-and-update-helper' ),
 				'callback' => array( $this, 'render_report_page' ),
-			),
-			'backhe_yis_backups' => array(
-				'title'    => __( 'Backups', 'admin-backend-and-update-helper' ),
-				'callback' => array( $this, 'render_backup_page' ),
 			),
 		);
 
@@ -168,17 +164,6 @@ class Backhe_YIS_Admin_Menu {
 	 */
 	public function render_report_page() {
 		$this->render_view( 'views/report-page.php' );
-	}
-
-	/**
-	 * Render the backup page.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return void
-	 */
-	public function render_backup_page() {
-		$this->render_view( 'views/backup-page.php' );
 	}
 
 	/**

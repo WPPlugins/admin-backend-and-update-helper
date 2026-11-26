@@ -24,18 +24,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function backhe_yis_autoload( $class_name ) {
 	$class_map = array(
-		'backhe_yis_activity_log'    => 'includes/class-backhe-yis-activity-log.php',
-		'backhe_yis_admin_actions'   => 'admin/class-backhe-yis-admin-actions.php',
-		'backhe_yis_admin_menu'      => 'admin/class-backhe-yis-admin-menu.php',
-		'backhe_yis_backup_database' => 'includes/class-backhe-yis-backup-database.php',
-		'backhe_yis_backup_files'    => 'includes/class-backhe-yis-backup-files.php',
-		'backhe_yis_backup_manager'  => 'includes/class-backhe-yis-backup-manager.php',
-		'backhe_yis_email_notifier'  => 'includes/class-backhe-yis-email-notifier.php',
-		'backhe_yis_event_tracker'   => 'includes/class-backhe-yis-event-tracker.php',
-		'backhe_yis_log_list_table'  => 'admin/class-backhe-yis-log-list-table.php',
-		'backhe_yis_report'          => 'includes/class-backhe-yis-report.php',
-		'backhe_yis_system_info'     => 'includes/class-backhe-yis-system-info.php',
-		'backhe_yis_update_checker'  => 'includes/class-backhe-yis-update-checker.php',
+		'backhe_yis_activity_log'   => 'includes/class-backhe-yis-activity-log.php',
+		'backhe_yis_admin_actions'  => 'admin/class-backhe-yis-admin-actions.php',
+		'backhe_yis_admin_menu'     => 'admin/class-backhe-yis-admin-menu.php',
+		'backhe_yis_email_notifier' => 'includes/class-backhe-yis-email-notifier.php',
+		'backhe_yis_event_tracker'  => 'includes/class-backhe-yis-event-tracker.php',
+		'backhe_yis_legacy_backups' => 'includes/class-backhe-yis-legacy-backups.php',
+		'backhe_yis_log_list_table' => 'admin/class-backhe-yis-log-list-table.php',
+		'backhe_yis_report'         => 'includes/class-backhe-yis-report.php',
+		'backhe_yis_system_info'    => 'includes/class-backhe-yis-system-info.php',
+		'backhe_yis_update_checker' => 'includes/class-backhe-yis-update-checker.php',
 	);
 
 	$key = strtolower( $class_name );

@@ -127,70 +127,6 @@
 			} );
 	}
 
-	function installUpdate() {
-		const $button = $( this );
-
-		// eslint-disable-next-line no-alert
-		if ( ! window.confirm( i18n.confirmUpdate ) ) {
-			return;
-		}
-
-		setBusy( $button, true, i18n.updating );
-
-		post( {
-			action: 'backhe_yis_update_single',
-			nonce: config.nonceUpdate,
-			type: $button.data( 'type' ),
-			slug: $button.data( 'slug' ),
-		} )
-			.done( function ( response ) {
-				if ( response.success ) {
-					showNotice( response.data.message, 'success' );
-					window.setTimeout( function () {
-						window.location.reload();
-					}, 1500 );
-				} else {
-					showNotice( errorMessage( response ), 'error' );
-					setBusy( $button, false );
-				}
-			} )
-			.fail( function () {
-				showNotice( i18n.requestFailed, 'error' );
-				setBusy( $button, false );
-			} );
-	}
-
-	function installAllUpdates() {
-		const $button = $( this );
-
-		// eslint-disable-next-line no-alert
-		if ( ! window.confirm( i18n.confirmUpdateAll ) ) {
-			return;
-		}
-
-		setBusy( $button, true, i18n.updating );
-
-		post( {
-			action: 'backhe_yis_update_all',
-			nonce: config.nonceUpdate,
-		} )
-			.done( function ( response ) {
-				if ( response.success ) {
-					showNotice( response.data.message, 'success' );
-					window.setTimeout( function () {
-						window.location.reload();
-					}, 2000 );
-				} else {
-					showNotice( errorMessage( response ), 'error' );
-					setBusy( $button, false );
-				}
-			} )
-			.fail( function () {
-				showNotice( i18n.requestFailed, 'error' );
-				setBusy( $button, false );
-			} );
-	}
-
 	/* Notifications tab: test email and validation. */
 
 	function getTestRecipients() {
@@ -280,98 +216,6 @@
 		}
 	}
 
-	/* Backups page. */
-
-	const backup = {
-		running: false,
-
-		start() {
-			const $button = $( '#backhe-backup-start' );
-
-			$button.prop( 'disabled', true );
-			backup.setStatus( 0, i18n.backupStarting );
-
-			post( {
-				action: 'backhe_yis_backup_start',
-				nonce: config.nonceBackup,
-				scope: $( '#backhe-backup-scope' ).val(),
-			} )
-				.done( function ( response ) {
-					if ( response.success ) {
-						backup.handle( response.data );
-					} else {
-						backup.finish( errorMessage( response ), 'error' );
-					}
-				} )
-				.fail( function () {
-					backup.finish( i18n.requestFailed, 'error' );
-				} );
-		},
-
-		step() {
-			post( {
-				action: 'backhe_yis_backup_step',
-				nonce: config.nonceBackup,
-			} )
-				.done( function ( response ) {
-					if ( response.success ) {
-						backup.handle( response.data );
-					} else {
-						backup.finish( errorMessage( response ), 'error' );
-					}
-				} )
-				.fail( function () {
-					// A step may hit a server time limit; the job resumes on the next request.
-					window.setTimeout( backup.step, 5000 );
-				} );
-		},
-
-		cancel() {
-			post( {
-				action: 'backhe_yis_backup_cancel',
-				nonce: config.nonceBackup,
-			} ).always( function () {
-				backup.finish( i18n.backupCancelled, 'warning' );
-			} );
-		},
-
-		handle( job ) {
-			backup.setStatus( job.progress, job.message );
-
-			if ( 'running' === job.status ) {
-				backup.running = true;
-				$( '#backhe-backup-cancel' ).prop( 'hidden', false );
-				window.setTimeout( backup.step, 300 );
-			} else if ( 'done' === job.status ) {
-				backup.finish( i18n.backupDone, 'success', true );
-			} else if ( 'failed' === job.status ) {
-				backup.finish( i18n.backupFailed + ( job.error ? ' ' + job.error : '' ), 'error' );
-			} else {
-				backup.finish( job.message, 'warning' );
-			}
-		},
-
-		setStatus( progress, message ) {
-			$( '#backhe-backup-progress' ).prop( 'hidden', false );
-			$( '#backhe-backup-progress-bar' ).val( progress );
-			$( '#backhe-backup-status' ).text( message );
-		},
-
-		finish( message, type, reload ) {
-			backup.running = false;
-			$( '#backhe-backup-start' ).prop( 'disabled', false );
-			$( '#backhe-backup-cancel' ).prop( 'hidden', true );
-			$( '#backhe-backup-status' ).text( message );
-			showNotice( message, type );
-
-			if ( reload ) {
-				window.setTimeout( function () {
-					window.location.reload();
-				}, 1500 );
-			}
-		},
-	};
-
 	$( function () {
 		// Overview page.
 		updateRecipientFields();
@@ -379,40 +223,14 @@
 		$( 'input[name="backhe_yis_settings[recipient_type]"]' ).on( 'change', updateRecipientFields );
 		$( '#notification-frequency' ).on( 'change', updateFrequencyFields );
 		$( '#backhe-manual-check-btn' ).on( 'click', manualCheck );
-		$( '.backhe-update-single-btn' ).on( 'click', installUpdate );
-		$( '#backhe-update-all-btn' ).on( 'click', installAllUpdates );
 		$( '#backhe-test-email-btn' ).on( 'click', sendTestEmail );
 		$( '#backhe-settings-form' ).on( 'submit', validateSettings );
 
-		// Activity log and backups: confirm deletions.
+		// Activity log: confirm deletions.
 		$( '.backhe-delete-entry' ).on( 'click', function ( event ) {
 			// eslint-disable-next-line no-alert
 			if ( ! window.confirm( i18n.confirmEntryDel ) ) {
 				event.preventDefault();
-			}
-		} );
-
-		$( '.backhe-delete-backup-form' ).on( 'submit', function ( event ) {
-			// eslint-disable-next-line no-alert
-			if ( ! window.confirm( i18n.confirmBackupDel ) ) {
-				event.preventDefault();
-			}
-		} );
-
-		// Backups page.
-		$( '#backhe-backup-start' ).on( 'click', backup.start );
-		$( '#backhe-backup-cancel' ).on( 'click', backup.cancel );
-
-		if ( '1' === String( $( '#backhe-backup-progress' ).data( 'running' ) ) ) {
-			backup.running = true;
-			backup.step();
-		}
-
-		$( window ).on( 'beforeunload', function ( event ) {
-			if ( backup.running ) {
-				event.preventDefault();
-				event.returnValue = i18n.backupLeaveWarn;
-				return i18n.backupLeaveWarn;
 			}
 		} );
 	} );

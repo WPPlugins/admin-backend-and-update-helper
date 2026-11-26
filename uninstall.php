@@ -2,8 +2,8 @@
 /**
  * Uninstall routine: removes all data of the plugin.
  *
- * Deletes the options, cron events, the activity log table and the backup
- * directory including all backups of every site.
+ * Deletes the options, cron events and the activity log table of every site,
+ * and backups left over from version 1.1.0.
  *
  * @package Admin_Backend_and_Update_Helper_YIS_Media
  * @since 1.1.0
@@ -34,25 +34,19 @@ function backhe_yis_uninstall_site() {
 		'backhe_yis_db_version',
 		'backhe_yis_report_settings',
 		'backhe_yis_report_state',
-		'backhe_yis_backup_settings',
-		'backhe_yis_backup_job',
-		'backhe_yis_backup_lock',
 	);
 
 	$cron_hooks = array(
 		'backhe_yis_scheduled_check',
 		'backhe_yis_log_cleanup',
 		'backhe_yis_report_check',
-		'backhe_yis_backup_scheduled',
-		'backhe_yis_backup_continue',
 	);
 
 	foreach ( $cron_hooks as $cron_hook ) {
 		wp_clear_scheduled_hook( $cron_hook );
 	}
 
-	// Needs the directory key option, so it runs before the options are deleted.
-	Backhe_YIS_Backup_Manager::delete_backup_directory();
+	Backhe_YIS_Legacy_Backups::remove();
 	Backhe_YIS_Activity_Log::drop_table();
 
 	foreach ( $options as $option ) {

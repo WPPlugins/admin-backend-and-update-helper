@@ -113,14 +113,12 @@ class Backhe_YIS_Admin_Actions {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only selects a predefined message.
 		$code     = isset( $_GET['backhe_message'] ) ? sanitize_key( wp_unslash( $_GET['backhe_message'] ) ) : '';
 		$messages = array(
-			'entry_saved'          => array( 'success', __( 'The service was saved.', 'admin-backend-and-update-helper' ) ),
-			'entry_deleted'        => array( 'success', __( 'The entry was deleted.', 'admin-backend-and-update-helper' ) ),
-			'entry_invalid'        => array( 'error', __( 'Please enter a description and a valid date.', 'admin-backend-and-update-helper' ) ),
-			'entry_failed'         => array( 'error', __( 'The entry could not be saved.', 'admin-backend-and-update-helper' ) ),
-			'report_sent'          => array( 'success', __( 'The report was sent.', 'admin-backend-and-update-helper' ) ),
-			'report_failed'        => array( 'error', __( 'The report could not be sent. Please check the recipients and the mail configuration of the server.', 'admin-backend-and-update-helper' ) ),
-			'backup_deleted'       => array( 'success', __( 'The backup was deleted.', 'admin-backend-and-update-helper' ) ),
-			'backup_delete_failed' => array( 'error', __( 'The backup could not be deleted.', 'admin-backend-and-update-helper' ) ),
+			'entry_saved'   => array( 'success', __( 'The service was saved.', 'admin-backend-and-update-helper' ) ),
+			'entry_deleted' => array( 'success', __( 'The entry was deleted.', 'admin-backend-and-update-helper' ) ),
+			'entry_invalid' => array( 'error', __( 'Please enter a description and a valid date.', 'admin-backend-and-update-helper' ) ),
+			'entry_failed'  => array( 'error', __( 'The entry could not be saved.', 'admin-backend-and-update-helper' ) ),
+			'report_sent'   => array( 'success', __( 'The report was sent.', 'admin-backend-and-update-helper' ) ),
+			'report_failed' => array( 'error', __( 'The report could not be sent. Please check the recipients and the mail configuration of the server.', 'admin-backend-and-update-helper' ) ),
 		);
 
 		if ( ! isset( $messages[ $code ] ) ) {

@@ -74,18 +74,9 @@ $no_label  = __( 'No', 'admin-backend-and-update-helper' );
 			$update_count = $plugin_instance->update_checker->get_update_count( $updates );
 			$last_check   = (int) get_option( 'backhe_yis_last_check', 0 );
 			$sections     = array(
-				'core'    => array(
-					'title' => __( 'WordPress core', 'admin-backend-and-update-helper' ),
-					'type'  => 'core',
-				),
-				'plugins' => array(
-					'title' => __( 'Plugins', 'admin-backend-and-update-helper' ),
-					'type'  => 'plugin',
-				),
-				'themes'  => array(
-					'title' => __( 'Themes', 'admin-backend-and-update-helper' ),
-					'type'  => 'theme',
-				),
+				'core'    => __( 'WordPress core', 'admin-backend-and-update-helper' ),
+				'plugins' => __( 'Plugins', 'admin-backend-and-update-helper' ),
+				'themes'  => __( 'Themes', 'admin-backend-and-update-helper' ),
 			);
 			?>
 			<div class="backhe-card backhe-card-full">
@@ -114,48 +105,28 @@ $no_label  = __( 'No', 'admin-backend-and-update-helper' );
 					</p>
 				</div>
 
-				<?php foreach ( $sections as $section_key => $section ) : ?>
+				<?php foreach ( $sections as $section_key => $section_title ) : ?>
 					<?php
 					if ( empty( $updates[ $section_key ] ) ) {
 						continue;
 					}
 					?>
 					<div class="backhe-update-section">
-						<h3><?php echo esc_html( $section['title'] . ' (' . count( $updates[ $section_key ] ) . ')' ); ?></h3>
+						<h3><?php echo esc_html( $section_title . ' (' . count( $updates[ $section_key ] ) . ')' ); ?></h3>
 						<table class="widefat striped">
 							<thead>
 								<tr>
 									<th scope="col"><?php esc_html_e( 'Name', 'admin-backend-and-update-helper' ); ?></th>
 									<th scope="col"><?php esc_html_e( 'Installed', 'admin-backend-and-update-helper' ); ?></th>
 									<th scope="col"><?php esc_html_e( 'Available', 'admin-backend-and-update-helper' ); ?></th>
-									<th scope="col"><?php esc_html_e( 'Action', 'admin-backend-and-update-helper' ); ?></th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ( $updates[ $section_key ] as $item ) : ?>
-									<?php
-									$item_name = isset( $item['name'] ) ? $item['name'] : 'WordPress';
-
-									if ( 'plugin' === $section['type'] ) {
-										$item_slug = $item['plugin_file'];
-									} elseif ( 'theme' === $section['type'] ) {
-										$item_slug = $item['stylesheet'];
-									} else {
-										$item_slug = 'core';
-									}
-									?>
 									<tr>
-										<th scope="row"><?php echo esc_html( $item_name ); ?></th>
+										<th scope="row"><?php echo esc_html( isset( $item['name'] ) ? $item['name'] : 'WordPress' ); ?></th>
 										<td><?php echo esc_html( $item['current_version'] ); ?></td>
 										<td><strong class="backhe-version-new"><?php echo esc_html( $item['new_version'] ); ?></strong></td>
-										<td>
-											<button type="button" class="button backhe-update-single-btn"
-												data-type="<?php echo esc_attr( $section['type'] ); ?>"
-												data-slug="<?php echo esc_attr( $item_slug ); ?>">
-												<?php esc_html_e( 'Install update', 'admin-backend-and-update-helper' ); ?>
-												<span class="screen-reader-text"><?php echo esc_html( $item_name ); ?></span>
-											</button>
-										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
@@ -182,12 +153,11 @@ $no_label  = __( 'No', 'admin-backend-and-update-helper' );
 
 				<?php if ( 0 === $update_count ) : ?>
 					<p class="backhe-success-message"><span aria-hidden="true">✓</span> <?php esc_html_e( 'Everything is up to date.', 'admin-backend-and-update-helper' ); ?></p>
-				<?php else : ?>
+				<?php elseif ( current_user_can( 'update_core' ) || current_user_can( 'update_plugins' ) || current_user_can( 'update_themes' ) ) : ?>
 					<p>
-						<button type="button" id="backhe-update-all-btn" class="button button-primary button-large">
-							<?php esc_html_e( 'Install all updates', 'admin-backend-and-update-helper' ); ?>
-						</button>
+						<a href="<?php echo esc_url( admin_url( 'update-core.php' ) ); ?>" class="button button-primary"><?php esc_html_e( 'Go to WordPress Updates', 'admin-backend-and-update-helper' ); ?></a>
 					</p>
+					<p class="description"><?php esc_html_e( 'Updates are installed on the WordPress updates page. Installed updates are recorded in the activity log.', 'admin-backend-and-update-helper' ); ?></p>
 				<?php endif; ?>
 			</div>
 

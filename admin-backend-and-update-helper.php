@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Admin Backend and Update Helper
- * Description: Update management, system information, activity log, service reports and backups for WordPress.
- * Version: 1.1.0
+ * Description: Update notifications, system information, activity log and service reports for WordPress maintenance.
+ * Version: 1.2.0
  * Author: YIS Media
  * Author URI: https://yis-media.com/
  * Requires at least: 6.2
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'BACKHE_YIS_VERSION', '1.1.0' );
+define( 'BACKHE_YIS_VERSION', '1.2.0' );
 define( 'BACKHE_YIS_PLUGIN_FILE', __FILE__ );
 define( 'BACKHE_YIS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BACKHE_YIS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -123,14 +123,6 @@ class Backhe_YIS_Media {
 	public $report;
 
 	/**
-	 * Backup manager.
-	 *
-	 * @since 1.1.0
-	 * @var Backhe_YIS_Backup_Manager
-	 */
-	public $backup_manager;
-
-	/**
 	 * Get the singleton instance.
 	 *
 	 * @since 1.0.0
@@ -156,7 +148,6 @@ class Backhe_YIS_Media {
 		$this->activity_log   = new Backhe_YIS_Activity_Log();
 		$this->event_tracker  = new Backhe_YIS_Event_Tracker( $this->activity_log );
 		$this->report         = new Backhe_YIS_Report( $this->activity_log, $this->email_notifier );
-		$this->backup_manager = new Backhe_YIS_Backup_Manager( $this->activity_log );
 		$this->admin_menu     = new Backhe_YIS_Admin_Menu();
 
 		if ( is_admin() ) {
@@ -175,8 +166,6 @@ class Backhe_YIS_Media {
 		// AJAX handlers.
 		add_action( 'wp_ajax_backhe_yis_manual_check', array( $this, 'ajax_manual_check' ) );
 		add_action( 'wp_ajax_backhe_yis_send_test_email', array( $this, 'ajax_send_test_email' ) );
-		add_action( 'wp_ajax_backhe_yis_update_single', array( $this, 'ajax_update_single' ) );
-		add_action( 'wp_ajax_backhe_yis_update_all', array( $this, 'ajax_update_all' ) );
 
 		// Scheduled events.
 		add_action( 'backhe_yis_scheduled_check', array( $this, 'scheduled_check' ) );
@@ -215,6 +204,11 @@ class Backhe_YIS_Media {
 	 * @return void
 	 */
 	public static function maybe_upgrade() {
+		// Retry removing old backups if an earlier attempt could not delete the directory.
+		if ( false !== get_option( 'backhe_yis_backup_dir_key' ) ) {
+			Backhe_YIS_Legacy_Backups::remove();
+		}
+
 		if ( BACKHE_YIS_VERSION === get_option( 'backhe_yis_plugin_version' ) ) {
 			return;
 		}
@@ -237,7 +231,7 @@ class Backhe_YIS_Media {
 		}
 
 		Backhe_YIS_Report::schedule_check();
-		Backhe_YIS_Backup_Manager::schedule_from_settings();
+		Backhe_YIS_Legacy_Backups::remove();
 
 		update_option( 'backhe_yis_plugin_version', BACKHE_YIS_VERSION, false );
 	}
@@ -415,27 +409,16 @@ class Backhe_YIS_Media {
 				'adminEmail'       => get_option( 'admin_email' ),
 				'nonceManualCheck' => wp_create_nonce( 'backhe_yis_manual_check' ),
 				'nonceTestEmail'   => wp_create_nonce( 'backhe_yis_test_email' ),
-				'nonceUpdate'      => wp_create_nonce( 'backhe_yis_update' ),
 				'i18n'             => array(
-					'checking'         => __( 'Checking…', 'admin-backend-and-update-helper' ),
-					'sending'          => __( 'Sending…', 'admin-backend-and-update-helper' ),
-					'updating'         => __( 'Updating…', 'admin-backend-and-update-helper' ),
-					'requestFailed'    => __( 'The request failed. Please reload the page and try again.', 'admin-backend-and-update-helper' ),
-					'enterEmail'       => __( 'Please enter an email address.', 'admin-backend-and-update-helper' ),
-					'invalidEmail'     => __( 'Please enter a valid email address.', 'admin-backend-and-update-helper' ),
-					'invalidEmail2'    => __( 'Please enter a valid second email address.', 'admin-backend-and-update-helper' ),
-					'invalidDays'      => __( 'Please enter a number of days between 1 and 365.', 'admin-backend-and-update-helper' ),
-					'confirmUpdate'    => __( 'Do you really want to install this update?', 'admin-backend-and-update-helper' ),
-					'confirmUpdateAll' => __( 'Do you really want to install all updates? This can take a few minutes.', 'admin-backend-and-update-helper' ),
-					'confirmBackupDel' => __( 'Delete this backup permanently? This cannot be undone.', 'admin-backend-and-update-helper' ),
-					'confirmEntryDel'  => __( 'Delete this entry permanently?', 'admin-backend-and-update-helper' ),
-					'backupStarting'   => __( 'Starting backup…', 'admin-backend-and-update-helper' ),
-					'backupCancelled'  => __( 'Backup cancelled.', 'admin-backend-and-update-helper' ),
-					'backupDone'       => __( 'Backup completed.', 'admin-backend-and-update-helper' ),
-					'backupFailed'     => __( 'Backup failed.', 'admin-backend-and-update-helper' ),
-					'backupLeaveWarn'  => __( 'A backup is running. If you leave this page, it continues in the background via WP-Cron, which can take longer.', 'admin-backend-and-update-helper' ),
+					'checking'        => __( 'Checking…', 'admin-backend-and-update-helper' ),
+					'sending'         => __( 'Sending…', 'admin-backend-and-update-helper' ),
+					'requestFailed'   => __( 'The request failed. Please reload the page and try again.', 'admin-backend-and-update-helper' ),
+					'enterEmail'      => __( 'Please enter an email address.', 'admin-backend-and-update-helper' ),
+					'invalidEmail'    => __( 'Please enter a valid email address.', 'admin-backend-and-update-helper' ),
+					'invalidEmail2'   => __( 'Please enter a valid second email address.', 'admin-backend-and-update-helper' ),
+					'invalidDays'     => __( 'Please enter a number of days between 1 and 365.', 'admin-backend-and-update-helper' ),
+					'confirmEntryDel' => __( 'Delete this entry permanently?', 'admin-backend-and-update-helper' ),
 				),
-				'nonceBackup'      => wp_create_nonce( 'backhe_yis_backup' ),
 			)
 		);
 	}
@@ -498,211 +481,6 @@ class Backhe_YIS_Media {
 		}
 
 		wp_send_json_success( array( 'message' => __( 'Test email sent.', 'admin-backend-and-update-helper' ) ) );
-	}
-
-	/**
-	 * AJAX: install a single core, plugin or theme update.
-	 *
-	 * @since 1.0.0
-	 * @since 1.1.0 Checks the capability per update type and only accepts
-	 *              slugs that currently have an update available.
-	 *
-	 * @return void
-	 */
-	public function ajax_update_single() {
-		check_ajax_referer( 'backhe_yis_update', 'nonce' );
-
-		$type = isset( $_POST['type'] ) ? sanitize_key( wp_unslash( $_POST['type'] ) ) : '';
-		$slug = isset( $_POST['slug'] ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
-
-		$capabilities = array(
-			'plugin' => 'update_plugins',
-			'theme'  => 'update_themes',
-			'core'   => 'update_core',
-		);
-
-		if ( ! isset( $capabilities[ $type ] ) ) {
-			wp_send_json_error( array( 'message' => __( 'Invalid update type.', 'admin-backend-and-update-helper' ) ) );
-		}
-
-		if ( ! Backhe_YIS_Admin_Menu::user_can_access() || ! current_user_can( $capabilities[ $type ] ) ) {
-			wp_send_json_error( array( 'message' => __( 'You are not allowed to do this.', 'admin-backend-and-update-helper' ) ) );
-		}
-
-		$this->load_upgrader_files();
-
-		$skin = new WP_Ajax_Upgrader_Skin();
-
-		if ( 'plugin' === $type ) {
-			if ( ! array_key_exists( $slug, get_plugin_updates() ) ) {
-				wp_send_json_error( array( 'message' => __( 'There is no update available for this plugin.', 'admin-backend-and-update-helper' ) ) );
-			}
-			$upgrader = new Plugin_Upgrader( $skin );
-			$result   = $upgrader->upgrade( $slug );
-		} elseif ( 'theme' === $type ) {
-			if ( ! array_key_exists( $slug, get_theme_updates() ) ) {
-				wp_send_json_error( array( 'message' => __( 'There is no update available for this theme.', 'admin-backend-and-update-helper' ) ) );
-			}
-			$upgrader = new Theme_Upgrader( $skin );
-			$result   = $upgrader->upgrade( $slug );
-		} else {
-			$core_update = $this->get_core_upgrade_offer();
-			if ( null === $core_update ) {
-				wp_send_json_error( array( 'message' => __( 'There is no WordPress update available.', 'admin-backend-and-update-helper' ) ) );
-			}
-			$upgrader = new Core_Upgrader( $skin );
-			$result   = $upgrader->upgrade( $core_update );
-		}
-
-		$outcome = $this->evaluate_upgrade_result( $result, $skin );
-
-		if ( is_wp_error( $outcome ) ) {
-			wp_send_json_error( array( 'message' => $outcome->get_error_message() ) );
-		}
-
-		wp_send_json_success( array( 'message' => __( 'Update installed.', 'admin-backend-and-update-helper' ) ) );
-	}
-
-	/**
-	 * AJAX: install all available updates the current user may install.
-	 *
-	 * @since 1.0.0
-	 * @since 1.1.0 Checks the capability per update type.
-	 *
-	 * @return void
-	 */
-	public function ajax_update_all() {
-		check_ajax_referer( 'backhe_yis_update', 'nonce' );
-
-		$can_update_core    = current_user_can( 'update_core' );
-		$can_update_plugins = current_user_can( 'update_plugins' );
-		$can_update_themes  = current_user_can( 'update_themes' );
-
-		if ( ! Backhe_YIS_Admin_Menu::user_can_access() || ( ! $can_update_core && ! $can_update_plugins && ! $can_update_themes ) ) {
-			wp_send_json_error( array( 'message' => __( 'You are not allowed to do this.', 'admin-backend-and-update-helper' ) ) );
-		}
-
-		$this->load_upgrader_files();
-
-		$updates = $this->update_checker->check_all_updates();
-		$results = array(
-			'success' => 0,
-			'failed'  => 0,
-		);
-
-		if ( $can_update_core ) {
-			$core_update = $this->get_core_upgrade_offer();
-			if ( null !== $core_update ) {
-				$skin     = new WP_Ajax_Upgrader_Skin();
-				$upgrader = new Core_Upgrader( $skin );
-				$this->count_upgrade_result( $upgrader->upgrade( $core_update ), $skin, $results );
-			}
-		}
-
-		if ( $can_update_plugins && ! empty( $updates['plugins'] ) ) {
-			foreach ( $updates['plugins'] as $plugin_update ) {
-				$skin     = new WP_Ajax_Upgrader_Skin();
-				$upgrader = new Plugin_Upgrader( $skin );
-				$this->count_upgrade_result( $upgrader->upgrade( $plugin_update['plugin_file'] ), $skin, $results );
-			}
-		}
-
-		if ( $can_update_themes && ! empty( $updates['themes'] ) ) {
-			foreach ( $updates['themes'] as $theme_update ) {
-				$skin     = new WP_Ajax_Upgrader_Skin();
-				$upgrader = new Theme_Upgrader( $skin );
-				$this->count_upgrade_result( $upgrader->upgrade( $theme_update['stylesheet'] ), $skin, $results );
-			}
-		}
-
-		wp_send_json_success(
-			array(
-				'message' => sprintf(
-					/* translators: 1: Number of successful updates, 2: Number of failed updates. */
-					__( 'Updates installed: %1$d, failed: %2$d.', 'admin-backend-and-update-helper' ),
-					$results['success'],
-					$results['failed']
-				),
-			)
-		);
-	}
-
-	/**
-	 * Load the WordPress files needed to run upgrades.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return void
-	 */
-	private function load_upgrader_files() {
-		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		require_once ABSPATH . 'wp-admin/includes/update.php';
-	}
-
-	/**
-	 * Get the core update offer that is an actual upgrade.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return object|null Update offer from get_core_updates(), null if none.
-	 */
-	private function get_core_upgrade_offer() {
-		$core_updates = get_core_updates();
-
-		if ( empty( $core_updates ) || ! is_array( $core_updates ) ) {
-			return null;
-		}
-
-		foreach ( $core_updates as $core_update ) {
-			if ( isset( $core_update->response ) && 'upgrade' === $core_update->response ) {
-				return $core_update;
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Turn an upgrader result into true or a WP_Error.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param mixed                 $result Return value of the upgrader's upgrade() method.
-	 * @param WP_Ajax_Upgrader_Skin $skin   Skin used by the upgrader.
-	 * @return true|WP_Error True on success, WP_Error on failure.
-	 */
-	private function evaluate_upgrade_result( $result, $skin ) {
-		if ( is_wp_error( $result ) ) {
-			return $result;
-		}
-
-		if ( false === $result || null === $result ) {
-			$messages = $skin->get_error_messages();
-			$message  = '' !== $messages ? $messages : __( 'The update failed.', 'admin-backend-and-update-helper' );
-
-			return new WP_Error( 'backhe_yis_update_failed', $message );
-		}
-
-		return true;
-	}
-
-	/**
-	 * Count an upgrader result as success or failure.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param mixed                 $result  Return value of the upgrader's upgrade() method.
-	 * @param WP_Ajax_Upgrader_Skin $skin    Skin used by the upgrader.
-	 * @param array                 $results Counters with the keys "success" and "failed", passed by reference.
-	 * @return void
-	 */
-	private function count_upgrade_result( $result, $skin, &$results ) {
-		if ( is_wp_error( $this->evaluate_upgrade_result( $result, $skin ) ) ) {
-			++$results['failed'];
-		} else {
-			++$results['success'];
-		}
 	}
 
 	/**
@@ -891,8 +669,6 @@ class Backhe_YIS_Media {
 			wp_clear_scheduled_hook( $cron_hook );
 		}
 
-		Backhe_YIS_Backup_Manager::abort_running_job( __( 'The plugin was deactivated.', 'admin-backend-and-update-helper' ) );
-
 		// Re-run the install routine on the next activation.
 		delete_option( 'backhe_yis_plugin_version' );
 	}
@@ -909,8 +685,6 @@ class Backhe_YIS_Media {
 			'backhe_yis_scheduled_check',
 			'backhe_yis_log_cleanup',
 			'backhe_yis_report_check',
-			'backhe_yis_backup_scheduled',
-			'backhe_yis_backup_continue',
 		);
 	}
 }
